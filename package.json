@@ -3,7 +3,7 @@
   "version": "0.0.1-SNAPSHOT",
   "description": "Description for jandall",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "cacheDirectories": [
     "node_modules"
   ],
