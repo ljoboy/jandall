@@ -1,0 +1,132 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-extra-info-heading" jhiTranslate="jandallApp.extraInfo.home.createOrEditLabel">Create or edit a Extra Info</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jandallApp.extraInfo.bdate" for="field_bdate">Bdate</label>
+                    <div class="input-group">
+                        <input id="field_bdate" type="text" class="form-control" name="bdate" ngbDatepicker #bdateDp="ngbDatepicker" formControlName="bdate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="bdateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jandallApp.extraInfo.occupation" for="field_occupation">Occupation</label>
+                    <input type="text" class="form-control" name="occupation" id="field_occupation"
+                           formControlName="occupation"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jandallApp.extraInfo.bio" for="field_bio">Bio</label>
+                    <input type="text" class="form-control" name="bio" id="field_bio"
+                           formControlName="bio"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jandallApp.extraInfo.country" for="field_country">Country</label>
+                    <input type="text" class="form-control" name="country" id="field_country"
+                           formControlName="country"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jandallApp.extraInfo.province" for="field_province">Province</label>
+                    <input type="text" class="form-control" name="province" id="field_province"
+                           formControlName="province"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jandallApp.extraInfo.city" for="field_city">City</label>
+                    <input type="text" class="form-control" name="city" id="field_city"
+                           formControlName="city"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jandallApp.extraInfo.address" for="field_address">Address</label>
+                    <input type="text" class="form-control" name="address" id="field_address"
+                           formControlName="address"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jandallApp.extraInfo.title" for="field_title">Title</label>
+                    <input type="text" class="form-control" name="title" id="field_title"
+                           formControlName="title"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jandallApp.extraInfo.mobile" for="field_mobile">Mobile</label>
+                    <input type="text" class="form-control" name="mobile" id="field_mobile"
+                           formControlName="mobile"/>
+                    <div *ngIf="editForm.get('mobile')!.invalid && (editForm.get('mobile')!.dirty || editForm.get('mobile')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('mobile')?.errors?.pattern" jhiTranslate="entity.validation.pattern" [translateValues]="{ pattern: 'Mobile' }">
+                            This field should follow pattern for "Mobile".
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jandallApp.extraInfo.img" for="field_img">Img</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('imgContentType')!.value + ';base64,' + editForm.get('img')!.value" style="max-height: 100px;" *ngIf="editForm.get('img')!.value" alt="extraInfo image"/>
+                        <div *ngIf="editForm.get('img')!.value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{ editForm.get('imgContentType')!.value }}, {{ byteSize(editForm.get('img')!.value) }}</span>
+                            <button type="button" (click)="clearInputImage('img', 'imgContentType', 'file_img')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_img" (change)="setFileData($event, 'img', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="img" id="field_img"
+                           formControlName="img"/>
+                    <input type="hidden" class="form-control" name="imgContentType" id="field_imgContentType"
+                           formControlName="imgContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jandallApp.extraInfo.social" for="field_social">Social</label>
+                    <select class="form-control" id="field_social" name="social" formControlName="social">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="socialOption.id === editForm.get('social')!.value?.id ? editForm.get('social')!.value : socialOption" *ngFor="let socialOption of socials; trackBy: trackById">{{ socialOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jandallApp.extraInfo.privacy" for="field_privacy">Privacy</label>
+                    <select class="form-control" id="field_privacy" name="privacy" formControlName="privacy">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="privacyOption.id === editForm.get('privacy')!.value?.id ? editForm.get('privacy')!.value : privacyOption" *ngFor="let privacyOption of privacies; trackBy: trackById">{{ privacyOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jandallApp.extraInfo.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="user">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userOption" *ngFor="let userOption of users; trackBy: trackById">{{ userOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

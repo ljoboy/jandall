@@ -1,0 +1,23 @@
+{
+  "jandallApp": {
+    "privacy": {
+      "home": {
+        "title": "Privacies",
+        "createLabel": "Create a new Privacy",
+        "createOrEditLabel": "Create or edit a Privacy",
+        "notFound": "No Privacies found"
+      },
+      "created": "A new Privacy is created with identifier {{ param }}",
+      "updated": "A Privacy is updated with identifier {{ param }}",
+      "deleted": "A Privacy is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Privacy {{ id }}?"
+      },
+      "detail": {
+        "title": "Privacy"
+      },
+      "bdate": "Bdate",
+      "year": "Year"
+    }
+  }
+}

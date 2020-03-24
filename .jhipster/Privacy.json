@@ -1,0 +1,25 @@
+{
+    "name": "Privacy",
+    "fields": [
+        {
+            "fieldName": "bdate",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "year",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200324234400",
+    "entityTableName": "privacy",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

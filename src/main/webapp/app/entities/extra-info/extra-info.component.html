@@ -1,0 +1,100 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jandallApp.extraInfo.home.title">Extra Infos</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-extra-info" [routerLink]="['/extra-info/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="jandallApp.extraInfo.home.createLabel">
+            Create a new Extra Info
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="extraInfos?.length === 0">
+        <span jhiTranslate="jandallApp.extraInfo.home.notFound">No extraInfos found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="extraInfos?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.extraInfo.bdate">Bdate</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.extraInfo.occupation">Occupation</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.extraInfo.bio">Bio</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.extraInfo.country">Country</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.extraInfo.province">Province</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.extraInfo.city">City</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.extraInfo.address">Address</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.extraInfo.title">Title</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.extraInfo.mobile">Mobile</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.extraInfo.img">Img</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.extraInfo.social">Social</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.extraInfo.privacy">Privacy</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.extraInfo.user">User</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let extraInfo of extraInfos ;trackBy: trackId">
+                    <td><a [routerLink]="['/extra-info', extraInfo.id, 'view']">{{ extraInfo.id }}</a></td>
+                    <td>{{ extraInfo.bdate | date:'mediumDate' }}</td>
+                    <td>{{ extraInfo.occupation }}</td>
+                    <td>{{ extraInfo.bio }}</td>
+                    <td>{{ extraInfo.country }}</td>
+                    <td>{{ extraInfo.province }}</td>
+                    <td>{{ extraInfo.city }}</td>
+                    <td>{{ extraInfo.address }}</td>
+                    <td>{{ extraInfo.title }}</td>
+                    <td>{{ extraInfo.mobile }}</td>
+                    <td>
+                        <a *ngIf="extraInfo.img" (click)="openFile(extraInfo.imgContentType, extraInfo.img)">
+                            <img [src]="'data:' + extraInfo.imgContentType + ';base64,' + extraInfo.img" style="max-height: 30px;" alt="extraInfo image"/>
+                        </a>
+                        <span *ngIf="extraInfo.img">{{ extraInfo.imgContentType }}, {{ byteSize(extraInfo.img) }}</span>
+                    </td>
+                    <td>
+                        <div *ngIf="extraInfo.social">
+                            <a [routerLink]="['/social', extraInfo.social?.id, 'view']" >{{ extraInfo.social?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="extraInfo.privacy">
+                            <a [routerLink]="['/privacy', extraInfo.privacy?.id, 'view']" >{{ extraInfo.privacy?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        {{ extraInfo.user?.id }}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/extra-info', extraInfo.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/extra-info', extraInfo.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(extraInfo)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

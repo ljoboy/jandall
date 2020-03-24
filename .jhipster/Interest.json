@@ -1,0 +1,36 @@
+{
+    "name": "Interest",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "percentage",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "extraInfo",
+            "otherEntityRelationshipName": "interests",
+            "relationshipName": "extraInfo",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200324234300",
+    "entityTableName": "interest",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

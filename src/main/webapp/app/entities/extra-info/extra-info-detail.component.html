@@ -1,0 +1,87 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="extraInfo">
+            <h2><span jhiTranslate="jandallApp.extraInfo.detail.title">Extra Info</span> {{ extraInfo.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jandallApp.extraInfo.bdate">Bdate</span></dt>
+                <dd>
+                    <span>{{ extraInfo.bdate }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.extraInfo.occupation">Occupation</span></dt>
+                <dd>
+                    <span>{{ extraInfo.occupation }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.extraInfo.bio">Bio</span></dt>
+                <dd>
+                    <span>{{ extraInfo.bio }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.extraInfo.country">Country</span></dt>
+                <dd>
+                    <span>{{ extraInfo.country }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.extraInfo.province">Province</span></dt>
+                <dd>
+                    <span>{{ extraInfo.province }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.extraInfo.city">City</span></dt>
+                <dd>
+                    <span>{{ extraInfo.city }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.extraInfo.address">Address</span></dt>
+                <dd>
+                    <span>{{ extraInfo.address }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.extraInfo.title">Title</span></dt>
+                <dd>
+                    <span>{{ extraInfo.title }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.extraInfo.mobile">Mobile</span></dt>
+                <dd>
+                    <span>{{ extraInfo.mobile }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.extraInfo.img">Img</span></dt>
+                <dd>
+                    <div *ngIf="extraInfo.img">
+                        <a (click)="openFile(extraInfo?.imgContentType!, extraInfo?.img)">
+                            <img [src]="'data:' + extraInfo.imgContentType + ';base64,' + extraInfo.img" style="max-width: 100%;" alt="extraInfo image"/>
+                        </a>
+                        {{ extraInfo.imgContentType }}, {{ byteSize(extraInfo.img) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.extraInfo.social">Social</span></dt>
+                <dd>
+                    <div *ngIf="extraInfo.social">
+                        <a [routerLink]="['/social', extraInfo.social?.id, 'view']">{{ extraInfo.social?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.extraInfo.privacy">Privacy</span></dt>
+                <dd>
+                    <div *ngIf="extraInfo.privacy">
+                        <a [routerLink]="['/privacy', extraInfo.privacy?.id, 'view']">{{ extraInfo.privacy?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.extraInfo.user">User</span></dt>
+                <dd>
+                    {{ extraInfo.user?.id }}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/extra-info', extraInfo.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="social">
+            <h2><span jhiTranslate="jandallApp.social.detail.title">Social</span> {{ social.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jandallApp.social.facebook">Facebook</span></dt>
+                <dd>
+                    <span>{{ social.facebook }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.social.twitter">Twitter</span></dt>
+                <dd>
+                    <span>{{ social.twitter }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.social.linkedIn">Linked In</span></dt>
+                <dd>
+                    <span>{{ social.linkedIn }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.social.instagram">Instagram</span></dt>
+                <dd>
+                    <span>{{ social.instagram }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.social.github">Github</span></dt>
+                <dd>
+                    <span>{{ social.github }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.social.gitlab">Gitlab</span></dt>
+                <dd>
+                    <span>{{ social.gitlab }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.social.flickr">Flickr</span></dt>
+                <dd>
+                    <span>{{ social.flickr }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.social.gmail">Gmail</span></dt>
+                <dd>
+                    <span>{{ social.gmail }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.social.email">Email</span></dt>
+                <dd>
+                    <span>{{ social.email }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.social.website">Website</span></dt>
+                <dd>
+                    <span>{{ social.website }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/social', social.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

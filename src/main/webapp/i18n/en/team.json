@@ -1,0 +1,35 @@
+{
+  "jandallApp": {
+    "team": {
+      "home": {
+        "title": "Teams",
+        "createLabel": "Create a new Team",
+        "createOrEditLabel": "Create or edit a Team",
+        "notFound": "No Teams found"
+      },
+      "created": "A new Team is created with identifier {{ param }}",
+      "updated": "A Team is updated with identifier {{ param }}",
+      "deleted": "A Team is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Team {{ id }}?"
+      },
+      "detail": {
+        "title": "Team"
+      },
+      "name": "Name",
+      "about": "About",
+      "img": "Img",
+      "country": "Country",
+      "province": "Province",
+      "city": "City",
+      "address": "Address",
+      "longitude": "Longitude",
+      "latitude": "Latitude",
+      "logo": "Logo",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At",
+      "social": "Social",
+      "members": "Members"
+    }
+  }
+}

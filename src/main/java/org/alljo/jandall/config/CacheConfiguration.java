@@ -43,6 +43,13 @@ public class CacheConfiguration {
             createCache(cm, org.alljo.jandall.domain.User.class.getName());
             createCache(cm, org.alljo.jandall.domain.Authority.class.getName());
             createCache(cm, org.alljo.jandall.domain.User.class.getName() + ".authorities");
+            createCache(cm, org.alljo.jandall.domain.Social.class.getName());
+            createCache(cm, org.alljo.jandall.domain.ExtraInfo.class.getName());
+            createCache(cm, org.alljo.jandall.domain.ExtraInfo.class.getName() + ".interests");
+            createCache(cm, org.alljo.jandall.domain.Interest.class.getName());
+            createCache(cm, org.alljo.jandall.domain.Privacy.class.getName());
+            createCache(cm, org.alljo.jandall.domain.Team.class.getName());
+            createCache(cm, org.alljo.jandall.domain.Team.class.getName() + ".members");
             // jhipster-needle-ehcache-add-entry
         };
     }

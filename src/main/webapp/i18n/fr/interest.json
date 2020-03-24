@@ -1,0 +1,24 @@
+{
+  "jandallApp": {
+    "interest": {
+      "home": {
+        "title": "Interests",
+        "createLabel": "Créer un nouveau Interest",
+        "createOrEditLabel": "Créer ou éditer un Interest",
+        "notFound": "Aucun Interest trouvé"
+      },
+      "created": "Un nouveau Interest a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Interest avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Interest avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Interest {{ id }} ?"
+      },
+      "detail": {
+        "title": "Interest"
+      },
+      "name": "Name",
+      "percentage": "Percentage",
+      "extraInfo": "Extra Info"
+    }
+  }
+}

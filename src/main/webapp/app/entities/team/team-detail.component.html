@@ -1,0 +1,96 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="team">
+            <h2><span jhiTranslate="jandallApp.team.detail.title">Team</span> {{ team.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jandallApp.team.name">Name</span></dt>
+                <dd>
+                    <span>{{ team.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.team.about">About</span></dt>
+                <dd>
+                    <span>{{ team.about }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.team.img">Img</span></dt>
+                <dd>
+                    <div *ngIf="team.img">
+                        <a (click)="openFile(team?.imgContentType!, team?.img)">
+                            <img [src]="'data:' + team.imgContentType + ';base64,' + team.img" style="max-width: 100%;" alt="team image"/>
+                        </a>
+                        {{ team.imgContentType }}, {{ byteSize(team.img) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.team.country">Country</span></dt>
+                <dd>
+                    <span>{{ team.country }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.team.province">Province</span></dt>
+                <dd>
+                    <span>{{ team.province }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.team.city">City</span></dt>
+                <dd>
+                    <span>{{ team.city }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.team.address">Address</span></dt>
+                <dd>
+                    <span>{{ team.address }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.team.longitude">Longitude</span></dt>
+                <dd>
+                    <span>{{ team.longitude }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.team.latitude">Latitude</span></dt>
+                <dd>
+                    <span>{{ team.latitude }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.team.logo">Logo</span></dt>
+                <dd>
+                    <div *ngIf="team.logo">
+                        <a (click)="openFile(team?.logoContentType!, team?.logo)">
+                            <img [src]="'data:' + team.logoContentType + ';base64,' + team.logo" style="max-width: 100%;" alt="team image"/>
+                        </a>
+                        {{ team.logoContentType }}, {{ byteSize(team.logo) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.team.createdAt">Created At</span></dt>
+                <dd>
+                    <span>{{ team.createdAt }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.team.updatedAt">Updated At</span></dt>
+                <dd>
+                    <span>{{ team.updatedAt }}</span>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.team.social">Social</span></dt>
+                <dd>
+                    <div *ngIf="team.social">
+                        <a [routerLink]="['/social', team.social?.id, 'view']">{{ team.social?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jandallApp.team.members">Members</span></dt>
+                <dd>
+                    <span *ngFor="let members of team.members; let last = last">
+                        {{ members.id }}{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/team', team.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

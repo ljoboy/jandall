@@ -1,0 +1,35 @@
+{
+  "jandallApp": {
+    "extraInfo": {
+      "home": {
+        "title": "Extra Infos",
+        "createLabel": "Create a new Extra Info",
+        "createOrEditLabel": "Create or edit a Extra Info",
+        "notFound": "No Extra Infos found"
+      },
+      "created": "A new Extra Info is created with identifier {{ param }}",
+      "updated": "A Extra Info is updated with identifier {{ param }}",
+      "deleted": "A Extra Info is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Extra Info {{ id }}?"
+      },
+      "detail": {
+        "title": "Extra Info"
+      },
+      "bdate": "Bdate",
+      "occupation": "Occupation",
+      "bio": "Bio",
+      "country": "Country",
+      "province": "Province",
+      "city": "City",
+      "address": "Address",
+      "title": "Title",
+      "mobile": "Mobile",
+      "img": "Img",
+      "social": "Social",
+      "privacy": "Privacy",
+      "user": "User",
+      "interests": "Interests"
+    }
+  }
+}

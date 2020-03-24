@@ -1,0 +1,105 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jandallApp.team.home.title">Teams</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-team" [routerLink]="['/team/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="jandallApp.team.home.createLabel">
+            Create a new Team
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="teams?.length === 0">
+        <span jhiTranslate="jandallApp.team.home.notFound">No teams found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="teams?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.team.name">Name</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.team.about">About</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.team.img">Img</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.team.country">Country</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.team.province">Province</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.team.city">City</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.team.address">Address</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.team.longitude">Longitude</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.team.latitude">Latitude</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.team.logo">Logo</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.team.createdAt">Created At</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.team.updatedAt">Updated At</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.team.social">Social</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.team.members">Members</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let team of teams ;trackBy: trackId">
+                    <td><a [routerLink]="['/team', team.id, 'view']">{{ team.id }}</a></td>
+                    <td>{{ team.name }}</td>
+                    <td>{{ team.about }}</td>
+                    <td>
+                        <a *ngIf="team.img" (click)="openFile(team.imgContentType, team.img)">
+                            <img [src]="'data:' + team.imgContentType + ';base64,' + team.img" style="max-height: 30px;" alt="team image"/>
+                        </a>
+                        <span *ngIf="team.img">{{ team.imgContentType }}, {{ byteSize(team.img) }}</span>
+                    </td>
+                    <td>{{ team.country }}</td>
+                    <td>{{ team.province }}</td>
+                    <td>{{ team.city }}</td>
+                    <td>{{ team.address }}</td>
+                    <td>{{ team.longitude }}</td>
+                    <td>{{ team.latitude }}</td>
+                    <td>
+                        <a *ngIf="team.logo" (click)="openFile(team.logoContentType, team.logo)">
+                            <img [src]="'data:' + team.logoContentType + ';base64,' + team.logo" style="max-height: 30px;" alt="team image"/>
+                        </a>
+                        <span *ngIf="team.logo">{{ team.logoContentType }}, {{ byteSize(team.logo) }}</span>
+                    </td>
+                    <td>{{ team.createdAt | date:'medium' }}</td>
+                    <td>{{ team.updatedAt | date:'medium' }}</td>
+                    <td>
+                        <div *ngIf="team.social">
+                            <a [routerLink]="['/social', team.social?.id, 'view']" >{{ team.social?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <span *ngFor="let members of team.members; let last = last">
+                            {{ members.id }}{{ last ? '' : ', ' }}
+                        </span>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/team', team.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/team', team.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(team)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

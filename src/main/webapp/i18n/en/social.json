@@ -1,0 +1,31 @@
+{
+  "jandallApp": {
+    "social": {
+      "home": {
+        "title": "Socials",
+        "createLabel": "Create a new Social",
+        "createOrEditLabel": "Create or edit a Social",
+        "notFound": "No Socials found"
+      },
+      "created": "A new Social is created with identifier {{ param }}",
+      "updated": "A Social is updated with identifier {{ param }}",
+      "deleted": "A Social is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Social {{ id }}?"
+      },
+      "detail": {
+        "title": "Social"
+      },
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "linkedIn": "Linked In",
+      "instagram": "Instagram",
+      "github": "Github",
+      "gitlab": "Gitlab",
+      "flickr": "Flickr",
+      "gmail": "Gmail",
+      "email": "Email",
+      "website": "Website"
+    }
+  }
+}

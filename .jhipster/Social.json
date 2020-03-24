@@ -1,0 +1,65 @@
+{
+    "name": "Social",
+    "fields": [
+        {
+            "fieldName": "facebook",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "twitter",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "linkedIn",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "instagram",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "github",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "gitlab",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "flickr",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "gmail",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "pattern"
+            ],
+            "fieldValidateRulesPattern": "^[a-z0-9](\\.?[a-z0-9]){5,}@g(oogle)?mail\\.com$"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "pattern"
+            ],
+            "fieldValidateRulesPattern": "[\\w-]+@([\\w-]+\\.)+[\\w-]+"
+        },
+        {
+            "fieldName": "website",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200324234100",
+    "entityTableName": "social",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

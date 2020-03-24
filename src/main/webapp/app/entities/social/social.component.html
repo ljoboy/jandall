@@ -1,0 +1,79 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jandallApp.social.home.title">Socials</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-social" [routerLink]="['/social/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="jandallApp.social.home.createLabel">
+            Create a new Social
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="socials?.length === 0">
+        <span jhiTranslate="jandallApp.social.home.notFound">No socials found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="socials?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.social.facebook">Facebook</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.social.twitter">Twitter</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.social.linkedIn">Linked In</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.social.instagram">Instagram</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.social.github">Github</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.social.gitlab">Gitlab</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.social.flickr">Flickr</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.social.gmail">Gmail</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.social.email">Email</span></th>
+                    <th scope="col" ><span jhiTranslate="jandallApp.social.website">Website</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let social of socials ;trackBy: trackId">
+                    <td><a [routerLink]="['/social', social.id, 'view']">{{ social.id }}</a></td>
+                    <td>{{ social.facebook }}</td>
+                    <td>{{ social.twitter }}</td>
+                    <td>{{ social.linkedIn }}</td>
+                    <td>{{ social.instagram }}</td>
+                    <td>{{ social.github }}</td>
+                    <td>{{ social.gitlab }}</td>
+                    <td>{{ social.flickr }}</td>
+                    <td>{{ social.gmail }}</td>
+                    <td>{{ social.email }}</td>
+                    <td>{{ social.website }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/social', social.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/social', social.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(social)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

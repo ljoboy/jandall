@@ -1,0 +1,35 @@
+{
+  "jandallApp": {
+    "extraInfo": {
+      "home": {
+        "title": "ExtraInfos",
+        "createLabel": "Créer un nouveau Extra Info",
+        "createOrEditLabel": "Créer ou éditer un Extra Info",
+        "notFound": "Aucun Extra Info trouvé"
+      },
+      "created": "Un nouveau Extra Info a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Extra Info avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Extra Info avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Extra Info {{ id }} ?"
+      },
+      "detail": {
+        "title": "Extra Info"
+      },
+      "bdate": "Bdate",
+      "occupation": "Occupation",
+      "bio": "Bio",
+      "country": "Country",
+      "province": "Province",
+      "city": "City",
+      "address": "Address",
+      "title": "Title",
+      "mobile": "Mobile",
+      "img": "Img",
+      "social": "Social",
+      "privacy": "Privacy",
+      "user": "User",
+      "interests": "Interests"
+    }
+  }
+}
