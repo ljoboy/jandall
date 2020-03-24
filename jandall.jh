@@ -1,0 +1,65 @@
+entity Social {
+	facebook String
+    twitter String
+    linkedIn String
+    instagram String
+    github String
+    gitlab String
+    flickr String
+    gmail String pattern(/^[a-z0-9](\.?[a-z0-9]){5,}@g(oogle)?mail\.com$/)
+    email String pattern(/[\w-]+@([\w-]+\.)+[\w-]+/)
+    website String
+}
+
+entity ExtraInfo {
+	bdate LocalDate
+    occupation String
+    bio String
+    country String
+    province String
+    city String
+    address String
+    title String
+    mobile String pattern(/^\+(?:[0-9] ?){6,14}[0-9]$/)
+    img ImageBlob
+}
+
+entity Interest {
+	name String required
+    percentage Integer
+}
+
+entity Privacy {
+	bdate Boolean
+    year Boolean
+}
+
+entity Team {
+	name String
+    about String
+    img ImageBlob
+    country String
+    province String
+    city String
+    address String
+    longitude Long
+    latitude Long
+    logo ImageBlob
+    createdAt Instant
+    updatedAt Instant
+}
+
+relationship OneToOne {
+	ExtraInfo{social} to Social
+    ExtraInfo{privacy} to Privacy
+    Team{social} to Social
+    ExtraInfo{user} to User
+}
+
+relationship OneToMany {
+	ExtraInfo{interests} to Interest
+}
+
+relationship ManyToMany {
+	Team{members} to User{teamOns}
+}
